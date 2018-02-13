@@ -1,0 +1,49 @@
+void setup(){
+  size(220,220);
+  noStroke();
+  fill(0,128,0);
+  smooth();
+}
+
+void draw(){
+  background(0);
+
+  /// this changes the location of the object
+  fill(0,128,0);
+  translate(width/2,height/2);
+  
+  /// millis is the timing delay in the sequence
+  // what is MAP?
+  
+  if( millis() % 4000 < 1000 ){
+    // translates have to be the origin of the thing
+    translate(20,-20);
+    // radians is the degree of motion, changing it slows the speed though
+    // negative radians is counter clockwise
+    rotate(map(millis()%1000,0,1000,0,radians(-90)));
+    rect(-70,-30,100,100);
+  } else if( millis() % 4000 < 2000 ){
+    translate(20,-20);
+    rotate(map(millis()%1000,0,1000,radians(-90),0));
+    rect(-70,-30,100,100);
+  } else if( millis() % 4000 < 3000 ){
+    translate(-20,-20);
+    // positive radians is clockwise
+    rotate(map(millis()%1000,0,1000,0,radians(10)));
+    rect(-30,-30,100,100);
+  } else {
+    translate(-20,-20);
+    rotate(map(millis()%1000,0,1000,radians(10),0));
+    rect(-30,-30,100,100);
+  }
+  
+  //GUIDE DOTS
+  // red dot moves?
+  
+  fill(255, 0, 0);
+  ellipse(20,-20, 20, 20);
+  fill(255, 255, 0);
+  ellipse(-30,-30,20,20);
+  fill(0,0, 255);
+  ellipse(-70,-30,20,20);
+}
